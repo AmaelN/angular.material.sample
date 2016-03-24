@@ -1,0 +1,24 @@
+{
+  "name": "WebStorm App",
+  "authors": [
+    "Amael Noel"
+  ],
+  "description": "Sample application for training purpose",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "app/bower_components"
+  ],
+  "dependencies": {
+    "angular-material": "^1.0.6",
+    "angular-material-icons": "^0.6.0"
+  }
+}
