@@ -16,5 +16,8 @@ typings
 # WebStorm
 .idea
 
+# tmp folder
+.tmp
+
 # ignore .js.map files
 *.js.map

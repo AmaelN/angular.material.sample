@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic' />
+
+        <link rel="stylesheet" href="css/lib-f6f3408d7a.css">
+
+        <link rel="stylesheet" href="css/app-ee7a20b345.css">
+
+        
+        <style type="text/css">
+        [ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{
+            display: none !important;
+        }
+        </style>
+        
+     </head>
+    <body layout="row" ng-cloak ng-app="contactManagerApp" ng-controller="mainController as vm" md-theme="default">
+
+    <div ng-include="'view/sidenav.html'" layout="vertical"> </div>
+
+    <div layout="column" flex id="wrapper">
+        <div ng-include="'view/toolbar-header.html'"> </div>
+        <md-content flex id="content">
+            <div ng-include="'view/main-content.html'" layout="vertical"> </div>
+
+            <md-tabs md-dynamic-height
+                     md-stretch-tabs="always"
+                     md-selected="vm.tabIndex">
+                <md-tab label="Bio">
+                    <div ng-include="'view/tab-bio.html'"> </div>
+                </md-tab>
+                <md-tab label="Notes">
+                    <div ng-include="'view/tab-notes.html'"> </div>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+
+         <script src="js/lib.js"></script>
+
+        <script src="js/app-cc6d56a845.js"></script>
+
+
+
+     </body>
+</html>
+    
+    
+    

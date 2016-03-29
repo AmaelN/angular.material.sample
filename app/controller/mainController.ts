@@ -88,7 +88,7 @@ module ContactManagerApp{
         showContactOptions($event):void {
             this.$mdBottomSheet.show({
                 parent: angular.element(document.getElementById('wrapper')),
-                templateUrl: './view/contactSheet.html',
+                templateUrl: 'view/contactSheet.html',
                 controller: ContactPanelController,
                 controllerAs: "cp",
                 bindToController:true,
@@ -122,7 +122,7 @@ module ContactManagerApp{
             var useFullScreen = (this.$mdMedia('sm') || this.$mdMedia('xs'));
             
             this.$mdDialog.show({
-                templateUrl: "./view/newUserDialog.html",
+                templateUrl: "view/newUserDialog.html",
                 parent: angular.element(document.body),
                 targetEvent: $event,
                 controller: AddUserDialogController,
