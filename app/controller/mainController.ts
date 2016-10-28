@@ -1,11 +1,11 @@
-/// <reference path="../boot.ts" />
-///<reference path="../model.ts"/>
-///<reference path="addUserDialogController.ts"/>
-///<reference path="contactPanelController.ts"/>
 
-module ContactManagerApp{
-    
-    export class MainController{       
+import {IUserService} from '../services/userService';
+import {model} from '../model';
+import {ContactPanelController} from '../controller/contactPanelController';
+import {AddUserDialogController} from '../controller/addUserDialogController';
+
+
+    export default class MainController{       
         static $inject =[
             'userService',
             '$mdSidenav',
@@ -24,7 +24,7 @@ module ContactManagerApp{
             var self = this;
             this.userService
             .loadAllUsers()
-            .then((x: User[])=>{
+            .then((x: model.User[])=>{
                 self.users = x;
                 self.selected = x[0];
                 self.userService.selectedUser = self.selected;
@@ -35,12 +35,12 @@ module ContactManagerApp{
         
         tabIndex: number =0;
         searchText :string="";
-        users: User[]=[];  
-        selected : User =null;      
-        newNote:Note = new Note('',null);
+        users: model.User[]=[];  
+        selected : model.User =null;      
+        newNote:model.Note = new model.Note('',null);
         
         
-        selectUser (user:User):void {
+        selectUser (user:model.User):void {
             this.selected=user;
             this.userService.selectedUser = user;
             
@@ -66,7 +66,7 @@ module ContactManagerApp{
             this.formScope.noteForm.$setUntouched();
             this.formScope.noteForm.$setPristine();
             
-            this.newNote = new Note('',null);
+            this.newNote = new model.Note('',null);
             this.openToast("Note added");
         }
         
@@ -91,14 +91,14 @@ module ContactManagerApp{
                 templateUrl: 'view/contactSheet.html',
                 controller: ContactPanelController,
                 controllerAs: "cp",
-                bindToController:true,
-                targetEvent:$event
+               // bindToController:true,
+               // targetEvent:$event
             }).then((clickedItem)=>{
                 clickedItem && console.log(clickedItem.name + ' clicked!');
             })
         }
         
-        removeNote(note:Note):void {
+        removeNote(note:model.Note):void {
             var foundIndex = this.selected.notes.indexOf(note);
             this.selected.notes.splice(foundIndex,1);
             this.openToast("Note was removed");
@@ -129,8 +129,8 @@ module ContactManagerApp{
                 controllerAs: 'ctrl',
                 clickOutsideToClose:true,
                 fullscreen: useFullScreen
-            }).then((user:CreateUser)=>{
-                var newUser: User = User.fromCreate(user);
+            }).then((user:model.CreateUser)=>{
+                var newUser: model.User = model.User.fromCreate(user);
                 self.users.push(newUser);
                 self.selectUser(newUser);
                 self.openToast("User added");
@@ -140,4 +140,5 @@ module ContactManagerApp{
         }
     }
     
-}
+ // angular.module('contactManagerApp')
+ //    .controller('mainController', MainController);

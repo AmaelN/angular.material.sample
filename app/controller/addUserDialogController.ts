@@ -1,24 +1,25 @@
+import {model} from '../model';
 
-module ContactManagerApp{
+export class AddUserDialogController{
+
+    user : model.CreateUser;
+
+    static $inject = ['$mdDialog'];
     
-    export class AddUserDialogController{
-        static $inject = ['$mdDialog'];
-        
-        constructor(private $mdDialog: angular.material.IDialogService) {}
-        
-        
-        user: CreateUser;
-        
-        avatars =[
-            'svg-1','svg-2','svg-3','svg-4'
-        ]
-        
-        cancel():void {
-            this.$mdDialog.cancel();
-        }
-        
-        save():void {
-            this.$mdDialog.hide( this.user);
-        }
+    constructor(private $mdDialog: angular.material.IDialogService) { }
+    
+    avatars =[
+        'svg-1','svg-2','svg-3','svg-4'
+    ]
+    
+    cancel():void {
+        this.$mdDialog.cancel();
+    }
+    
+    save():void {
+        this.$mdDialog.hide( this.user);
     }
 }
+
+// angular.module('contactManagerApp')
+//     .controller('addUserDialogController', AddUserDialogController);

@@ -1,26 +1,24 @@
-/// <reference path="../boot.ts" />
+ import {model} from '../model';
 
-module ContactManagerApp{   
-    
     export interface IUserService{
-        loadAllUsers(): ng.IPromise<User[]>;
-        selectedUser: User;
+        loadAllUsers(): ng.IPromise<model.User[]>;
+        selectedUser: model.User;
     }
 
-    export class UserService implements IUserService {
+    export default class UserService implements IUserService {
         
         static $inject = ['$q'];        
         constructor(private $q: ng.IQService) {       
         }
         
-        selectedUser: User =null;
+        selectedUser: model.User =null;
         
         
-        loadAllUsers(): ng.IPromise<User[]>{
+        loadAllUsers(): ng.IPromise<model.User[]>{
             return this.$q.when(this.users);
         }
         
-        private users: User[] =[
+        private users: model.User[] =[
              {
                 name: 'Adan Blur',
                 avatar: 'svg-1',
@@ -62,5 +60,6 @@ module ContactManagerApp{
             },            
         ];        
     }
-}
- 
+
+    // angular.module('contactManagerApp')
+    // .service('userService', UserService);

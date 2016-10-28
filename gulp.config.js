@@ -1,28 +1,56 @@
 
+
+
 module.exports = function(){
 
     var appFolder = './app/';
-    var bowerFolder = './app/bower_components/';
+    var bowerFolder = './bower_components/';
     var temp = './.tmp/';
     var root = "./";
+    var build = './build/';
+    var mainPage = 'index.html';
+
+
+    var paths = {
+        tscripts: {
+            src: ["./typings/index.d.ts", "app/app.consts.ts", "app/app.ts", "app/**/*.ts"],
+            dest: temp
+        },
+        html: ["./app/**/*.html"],
+        mainHtml: root + mainPage,
+        sass: {
+            src: ["./app/assets/styles/**/*.scss"],
+            dest: temp+"/styles"
+        },
+        fonts: {
+            src: ["./bower_components/font-awesome-less/fonts/*.{eot,svg,ttf,woff,woff2}"],
+            dest: build+"/fonts"
+        },
+        imgs: {
+            src: ["./app/assets/images/*.{png,jpeg,jpg,svg,ico}"],
+            dest: build+"/images"
+        },
+        langJson: {
+            src: ["./app/lang/*.json"],
+            dest: build + "/lang"
+        },
+        dist: build
+    };
 
     var config ={
+        port :9000,
         app : appFolder,
-        build: './build/',
-        css: appFolder+"assets/app.css",
-        htmltemplate: appFolder+ '/view/*.html',
-        index: appFolder +'index.html',
+        paths:paths,
+        build: build,
+        buildCss : temp + "**/*.css",
+        buildScript : build + "/scripts/",
+        index: root + mainPage,
+        indexBuild: build + mainPage,
         js: [
-            appFolder + '**/*.js',
-            '!'+appFolder+ 'boot.js',
-            '!'+bowerFolder + '**/*.js',
-        ],
-        packages:[
-            './package.json',
-            './bower.json'
+            temp + '*.js',
+            '!'+bowerFolder + '**/*.js'
         ],
         root:root,
-        svg: appFolder + "assets/svg/*.*",
         temp: temp,
         /**
          * TemplateCache Options
@@ -30,9 +58,9 @@ module.exports = function(){
         templateCache:{
             file:'template.js',
             options:{
-                module:'contactManagerApp',
+                module:'auth-app',
                 standAlone:false,
-                root:'view/'
+                root:'componenets/'
             }
         },
 
@@ -49,13 +77,14 @@ module.exports = function(){
     };
 
     config.getWiredepDefaultOptions= function () {
-      var options = {
-          bowerJson: config.bower.json,
-          directory: config.bower.directory,
-          ignorePath: config.bower.ignorePath
-      };
+        var options = {
+            bowerJson: config.bower.json,
+            directory: config.bower.directory,
+            ignorePath: config.bower.ignorePath
+        };
         return options;
     };
 
     return config;
 };
+

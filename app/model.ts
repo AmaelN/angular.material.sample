@@ -1,8 +1,6 @@
-/// <reference path="boot.ts" />
 
-module ContactManagerApp{ 
-    
-    
+ export module  model {
+
     export class CreateUser{
         constructor(
             public firstName:string,

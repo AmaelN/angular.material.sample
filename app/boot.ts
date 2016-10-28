@@ -1,9 +1,8 @@
-///<reference path="controller/mainController.ts"/>
-///<reference path="services/userService.ts"/>
 
-module ContactManagerApp{
-    angular
-          .module('contactManagerApp', [
+import MainController from './controller/mainController';
+import UserService from './services/userService';
+
+    angular.module('contactManagerApp', [
                 'ngMaterial',
                 'ngMdIcons',
                 'ngMessages'
@@ -25,7 +24,7 @@ module ContactManagerApp{
                 .primaryPalette('purple')
                 .accentPalette('orange');
           })
-          .run(function($log){
-            $log.debug("startApp running ");
-          });
-}
+           .run(function($log){
+             $log.debug("startApp running ");
+           });
+   // angular.bootstrap(document, ['contactManagerApp']);
