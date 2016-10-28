@@ -10,17 +10,31 @@ module.exports = function(){
     var build = './build/';
     var mainPage = 'index.html';
 
+    var entryJsName = 'boot.js';
 
     var paths = {
         tscripts: {
             src: ["./typings/index.d.ts", "app/app.consts.ts", "app/app.ts", "app/**/*.ts"],
-            dest: temp
+            dest: temp + 'js'
+        },
+        js: {
+            
+            entryPath: temp + 'js/' + entryJsName,
+            entryName : entryJsName
         },
         html: ["./app/**/*.html"],
         mainHtml: root + mainPage,
         sass: {
-            src: ["./app/assets/styles/**/*.scss"],
-            dest: temp+"/styles"
+            src: ["./app/assets/styles/**/*.{['sass', 'scss', 'css']}"],
+            dest: temp+"/styles",
+            options:{
+                "indentedSyntax": true,
+                "outputStyle": 'expanded',
+                "includePaths": []        
+            },
+            autoprefixerOptions: {
+                browsers: ['last 3 versions', '> 5%', 'Firefox ESR']
+            }       
         },
         fonts: {
             src: ["./bower_components/font-awesome-less/fonts/*.{eot,svg,ttf,woff,woff2}"],
@@ -39,6 +53,7 @@ module.exports = function(){
 
     var config ={
         port :9000,
+        tsconfig: './tsconfig.json',
         app : appFolder,
         paths:paths,
         build: build,

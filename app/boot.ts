@@ -1,7 +1,7 @@
-
+ 
 import MainController from './controller/mainController';
 import UserService from './services/userService';
-
+ 
     angular.module('contactManagerApp', [
                 'ngMaterial',
                 'ngMdIcons',
@@ -21,8 +21,8 @@ import UserService from './services/userService';
                 .icon("phone", "./assets/svg/phone.svg",512)
              
              $mdThemingProvider.theme('default')
-                .primaryPalette('purple')
-                .accentPalette('orange');
+                .primaryPalette('blue') 
+                .accentPalette('red');
           })
            .run(function($log){
              $log.debug("startApp running ");
